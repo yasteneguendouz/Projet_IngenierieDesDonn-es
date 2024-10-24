@@ -162,7 +162,25 @@ Même si les différents jobs sont présentés parallèlement ici, ils sont en v
 
 - Ce n'est pas possible d'avoir des connexions concurrentes sur un cluster Duckdb en lecture / écriture.
 
-Cependant, ce pipeline ETL permet in fine de réaliser des analyses simples :
+Cependant, ce pipeline ETL permet in fine de réaliser des analyses simples des données des stations de vélo en libre service en région parisienne.
+
+### Comment faire fonctionner ce projet?
+
+Pour faire fonctionner ce sujet, c'est assez simple:
+
+```bash 
+git clone https://github.com/kevinl75/polytech-de-101-2024-tp-subject.git
+
+cd polytech-de-101-2024-tp-subject
+
+python3 -m venv .venv
+
+source .venv/bin/activate
+
+pip install -r requirements.txt
+
+python src/main.py
+```
 
 ## Sujet du TP
 
