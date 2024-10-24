@@ -230,6 +230,8 @@ FROM DIM_STATION ds JOIN (
 ) AS tmp ON ds.id = tmp.station_id;
 ```
 
+Le sujet devra être rendu sous la forme d'un repository GitHub. Le projet peut être fait seul ou en duo.
+
 ### Barème utilisé pour la notation finale :
 
 - Les ingestions fonctionnent correctement et produisent des fichiers json localement (5 points)
