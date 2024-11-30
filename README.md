@@ -85,6 +85,9 @@ Pour exécuter ce projet, vous avez besoin :
     
 ## Installation 
 
+git clone https://github.com/yasteneguendouz/Projet_IngenierieDesDonn-es.git
+cd Projet_IngenierieDesDonn-es
+
 Créez un environnement virtuel Python :
 
 python3 -m venv .venv
