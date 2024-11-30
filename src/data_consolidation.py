@@ -7,7 +7,7 @@ import pandas as pd
 today_date = datetime.now().strftime("%Y-%m-%d")
 PARIS_CITY_CODE = 1
 NANTES_CITY_CODE = 2 
-
+TOULOUSE_CITY_CODE = 3 
 def create_consolidate_tables():
     con = duckdb.connect(database = "data/duckdb/mobility_analysis.duckdb", read_only = False)
     with open("data/sql_statements/create_consolidate_tables.sql") as fd:
@@ -35,7 +35,7 @@ def consolidate_station_data():
     with open(f"data/raw_data/{today_date}/paris_realtime_bicycle_data.json") as fd:
         data_paris = json.load(fd)
     paris_raw_data_df = pd.json_normalize(data_paris)
-    paris_raw_data_df["id"] = paris_raw_data_df["stationcode"].apply(lambda x: f"1-{x}")
+    paris_raw_data_df["id"] = paris_raw_data_df["stationcode"].apply(lambda x: f"{PARIS_CITY_CODE}-{x}")
     paris_raw_data_df["created_date"] = date.today()
     
     # Normalisation des noms de villes pour correspondre au mapping
@@ -71,7 +71,7 @@ def consolidate_station_data():
     with open(f"data/raw_data/{today_date}/nantes_realtime_bicycle_data.json") as fd:
         data_nantes = json.load(fd)
     nantes_raw_data_df = pd.json_normalize(data_nantes)
-    nantes_raw_data_df["id"] = nantes_raw_data_df["number"].apply(lambda x: f"2-{x}")
+    nantes_raw_data_df["id"] = nantes_raw_data_df["number"].apply(lambda x: f"{NANTES_CITY_CODE}-{x}")
     nantes_raw_data_df["created_date"] = date.today()
     nantes_raw_data_df["city_name"] = "nantes"  # Déjà en minuscules
     nantes_raw_data_df["city_code"] = nantes_raw_data_df["city_name"].map(city_code_mapping)
@@ -107,7 +107,7 @@ def consolidate_station_data():
         data_toulouse = json.load(fd)
     toulouse_raw_data_df = pd.json_normalize(data_toulouse)  # Ajustez en fonction de la structure réelle
 
-    toulouse_raw_data_df["id"] = toulouse_raw_data_df["number"].apply(lambda x: f"3-{x}")
+    toulouse_raw_data_df["id"] = toulouse_raw_data_df["number"].apply(lambda x: f"{TOULOUSE_CITY_CODE}-{x}")
     toulouse_raw_data_df["created_date"] = date.today()
     toulouse_raw_data_df["city_name"] = "toulouse"
     toulouse_raw_data_df["city_code"] = toulouse_raw_data_df["city_name"].map(city_code_mapping)
@@ -260,7 +260,7 @@ def consolidate_station_statement_data():
         data_toulouse = json.load(fd)
     toulouse_raw_data_df = pd.json_normalize(data_toulouse)  # Ajustez en fonction de la structure réelle
 
-    toulouse_raw_data_df["station_id"] = toulouse_raw_data_df["number"].apply(lambda x: f"3-{x}")
+    toulouse_raw_data_df["station_id"] = toulouse_raw_data_df["number"].apply(lambda x: f"{TOULOUSE_CITY_CODE}-{x}")
     toulouse_raw_data_df["created_date"] = date.today()
 
     toulouse_station_statement_data_df = toulouse_raw_data_df[[

@@ -2,9 +2,8 @@ import os
 from datetime import datetime
 
 import requests
-
 def get_paris_realtime_bicycle_data():
-    
+
     url = "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/velib-disponibilite-en-temps-reel/exports/json"
     
     response = requests.get(url)
