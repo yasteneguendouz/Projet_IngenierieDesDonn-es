@@ -7,7 +7,7 @@ Le but de ce projet est de créer un pipeline ETL (Extraction, Transformation, C
 ### Le pipeline intègre :
 
     Paris comme base initiale.
-    Les villes supplémentaires Nantes, Toulouse, et potentiellement d'autres grandes villes françaises.
+    Les villes supplémentaires Nantes et Toulouse.
     Les données descriptives des communes françaises, via une API de l'État.
     
     
